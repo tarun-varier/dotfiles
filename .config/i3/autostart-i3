@@ -1,0 +1,28 @@
+#!/bin/bash
+# Autostart for i3
+# by MrGreen [mrgreen@archbang.org]
+
+# Background
+nitrogen --restore
+killall volumeicon
+killall nm-applet
+killall dunst
+killall cbatticon
+
+# Onscreen system stats
+# (sleep 2 && conky) &
+
+# Network Manager Applet
+(sleep 2 && nm-applet) &
+
+# Volume
+(sleep 2 && volumeicon) &
+
+# Dunst onscreen messages
+(sleep 2 && dunst) &
+
+# Battery icon
+(sleep 2 && cbatticon -n) &
+
+# Xorg keyboard map change for your own country/keyboard layout
+# setxkbmap us &
