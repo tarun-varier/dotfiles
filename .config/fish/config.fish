@@ -1,4 +1,3 @@
-export LC_CTYPE="en_GB.utf8"
 export BROWSER=brave
 alias " q" exit
 alias ":q" exit

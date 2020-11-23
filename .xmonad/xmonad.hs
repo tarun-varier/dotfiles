@@ -344,39 +344,17 @@ treeselectAction a = TS.treeselectAction a
          , Node (TS.TSNode "doom emacs init.el" "doom emacs init" (spawn (myEditor ++ "/home/dt/.doom.d/init.el"))) []
          , Node (TS.TSNode "doom emacs packages.el" "doom emacs packages" (spawn (myEditor ++ "/home/dt/.doom.d/packages.el"))) []
          ]
-       , Node (TS.TSNode "+ xmobar configs" "My xmobar config files" (return ()))
-           [ Node (TS.TSNode "xmobar mon1" "status bar on monitor 1" (spawn (myEditor ++ "/home/dt/.config/xmobar/xmobarrc0"))) []
-           , Node (TS.TSNode "xmobar mon2" "status bar on monitor 2" (spawn (myEditor ++ "/home/dt/.config/xmobar/xmobarrc2"))) []
-           , Node (TS.TSNode "xmobar mon3" "status bar on monitor 3" (spawn (myEditor ++ "/home/dt/.config/xmobar/xmobarrc1"))) []
-           ]
-       , Node (TS.TSNode "+ xmonad configs" "My xmonad config files" (return ()))
-           [ Node (TS.TSNode "xmonad.hs" "My XMonad Main" (spawn (myEditor ++ "/home/tarun/.xmonad/xmonad.hs"))) []
-           , Node (TS.TSNode "MyGridMenu.hs" "My XMonad GridSelect menu" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyGridMenu.hs"))) []
-           , Node (TS.TSNode "MyKeys.hs" "My XMonad keybindings" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyKeys.hs"))) []
-           , Node (TS.TSNode "MyLayouts.hs" "My XMonad layouts" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyLayouts.hs"))) []
-           , Node (TS.TSNode "MyPrompts.hs" "My XMonad prompts" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyPrompts.hs"))) []
-           , Node (TS.TSNode "MyScratchpads.hs" "My XMonad named scratchpads" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyScratchpads.hs"))) []
-           , Node (TS.TSNode "MyTreeMenu.hs" "My XMonad TreeSelect menu" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyTreeMenu.hs"))) []
-           , Node (TS.TSNode "MyVariables.hs" "My XMonad variables" (spawn (myEditor ++ "/home/tarun/.xmonad/lib/Custom/MyVariables.hs"))) []
-           ]
+       , Node (TS.TSNode "xmobar" "status bar" (spawn (myEditor ++ "/home/tarun/.config/xmobar/xmobarrc0"))) []
+       , Node (TS.TSNode "xmonad" "My XMonad Main" (spawn (myEditor ++ "/home/tarun/.xmonad/xmonad.hs"))) []
        , Node (TS.TSNode "alacritty" "alacritty terminal emulator" (spawn (myEditor ++ "/home/tarun/.config/alacritty/alacritty.yml"))) []
-       , Node (TS.TSNode "awesome" "awesome window manager" (spawn (myEditor ++ "/home/tarun/.config/awesome/rc.lua"))) []
        , Node (TS.TSNode "bashrc" "the bourne again shell" (spawn (myEditor ++ "/home/tarun/.bashrc"))) []
-       , Node (TS.TSNode "bspwmrc" "binary space partitioning window manager" (spawn (myEditor ++ "/home/tarun/.config/bspwm/bspwmrc"))) []
-       , Node (TS.TSNode "dmenu config.h" "dynamic menu program" (spawn (myEditor ++ "/home/tarun/dmenu-distrotube/config.h"))) []
        , Node (TS.TSNode "dunst" "dunst notifications" (spawn (myEditor ++ "/home/tarun/.config/dunst/dunstrc"))) []
-       , Node (TS.TSNode "dwm config.h" "dynamic window manager" (spawn (myEditor ++ "/home/tarun/dwm-distrotube/config.h"))) []
-       , Node (TS.TSNode "herbstluftwm" "herbstluft window manager" (spawn (myEditor ++ "/home/tarun/.config/herbstluftwm/autostart"))) []
        , Node (TS.TSNode "neovim init.vim" "neovim text editor" (spawn (myEditor ++ "/home/tarun/.config/nvim/init.vim"))) []
        , Node (TS.TSNode "polybar" "easy-to-use status bar" (spawn (myEditor ++ "/home/tarun/.config/polybar/config"))) []
        , Node (TS.TSNode "qtile config.py" "qtile window manager" (spawn (myEditor ++ "/home/tarun/.config/qtile/config.py"))) []
        , Node (TS.TSNode "qutebrowser config.py" "qutebrowser web browser" (spawn (myEditor ++ "/home/tarun/.config/qutebrowser/config.py"))) []
-       , Node (TS.TSNode "st config.h" "suckless simple terminal" (spawn (myEditor ++ "home/tarun/st-distrotube/config.h"))) []
-       , Node (TS.TSNode "sxhkdrc" "simple X hotkey daemon" (spawn (myEditor ++ "/home/tarun/.config/sxhkd/sxhkdrc"))) []
-       , Node (TS.TSNode "surf config.h" "surf web browser" (spawn (myEditor ++ "/home/tarun/surf-distrotube/config.h"))) []
-       , Node (TS.TSNode "tabbed config.h" "generic tabbed interface" (spawn (myEditor ++ "home/tarun/tabbed-distrotube/config.h"))) []
        , Node (TS.TSNode "xresources" "xresources file" (spawn (myEditor ++ "/home/tarun/.Xresources"))) []
-       , Node (TS.TSNode "zshrc" "Config for the z shell" (spawn (myEditor ++ "/home/tarun/.zshrc"))) []
+       , Node (TS.TSNode "fish" "Config for the fish" (spawn (myEditor ++ "/home/tarun/.config/fish/config.fish"))) []
        ]
    , Node (TS.TSNode "+ Screenshots" "take a screenshot" (return ()))
        [ Node (TS.TSNode "Quick fullscreen" "take screenshot immediately" (spawn "scrot -d 1 ~/scrot/%Y-%m-%d-@%H-%M-%S-scrot.png")) []
@@ -589,13 +567,12 @@ searchList = [ ("a", archwiki)
              , ("y", S.youtube)
              , ("z", S.amazon)
              ]
-
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
                 ]
   where
-    spawnTerm  = myTerminal ++ " -n scratchpad"
+    spawnTerm  = "st -n scratchpad"
     findTerm   = resource =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where

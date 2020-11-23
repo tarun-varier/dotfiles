@@ -1,7 +1,7 @@
 #! /bin/bash
 
 function remind {
-  notify-send "drink water"
+  notify-send -t 300000 "drink water"
   sleep 15m
   remind
 }
