@@ -12,7 +12,7 @@ and also... my xmonad and openbox shit is the same as dt's...forgive me for my s
 <br>
 ye...thass all
 <br>
-P.S, ay yo Github homies, I apologise for bein "unprofessional" and usin profanity on Github
+P.S, ayo Github homies, I apologise for bein "unprofessional" and usin profanity on Github
 <hr>
 <br>
 Varier out
