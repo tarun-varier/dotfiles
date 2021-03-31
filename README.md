@@ -1,22 +1,22 @@
 # hello
 
-these are my precious dotfiles. can't afford to lose it. i mess my system every now and then. if i don't back these up, i'm tikka masala. this repo contains config files of these utilities:
+this repo contains my dotfiles for these utilities:
 
-xmonad
-alacritty
-aweomeWM
-dunst
-fish
-i3
-openbox
-pcmanfm
-picom
-rofi
-tint2
-xmobar
-
-ye....thass all
-
-<hr/>
+<ul>
+  <li>xmonad</li>
+  <li>alacritty</li>
+  <li>aweomeWM</li>
+  <li>dunst</li>
+  <li>fish</li>
+  <li>i3</li>
+  <li>openbox</li>
+  <li>pcmanfm</li>
+  <li>picom</li>
+  <li>rofi</li>
+  <li>tint2</li>
+  <li>xmobar</li>
+</ul>
+  
 <br>
-Varier out
+thass all
+
