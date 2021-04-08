@@ -1,22 +1,16 @@
-# hello
+# Hello
 
-this repo contains my dotfiles for these utilities:
+This repo is a backup of all my necessary dotfiles in case restoration is necessary. I reinstall my system every month or so. I require this repo to restore my implementations of utilities below mentioned:
 
 <ul>
   <li>xmonad</li>
-  <li>alacritty</li>
-  <li>aweomeWM</li>
-  <li>dunst</li>
-  <li>fish</li>
-  <li>i3</li>
-  <li>openbox</li>
-  <li>pcmanfm</li>
-  <li>picom</li>
-  <li>rofi</li>
-  <li>tint2</li>
   <li>xmobar</li>
+  <li>picom</li>
+  <li>dunst</li>
+  <li>spicetify</li>
+  <li>zathura</li>
 </ul>
-  
-<br>
-thass all
 
+Thassall
+
+Thank you

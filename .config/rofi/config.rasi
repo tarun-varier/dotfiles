@@ -1,4 +1,0 @@
-configuration {
-	theme: "~/.config/rofi/themes/distrotube.rasi";
-}
-@import "/usr/share/rofi/themes/android_notification.rasi"
