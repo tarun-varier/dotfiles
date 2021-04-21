@@ -92,17 +92,17 @@ myBrowser = "qutebrowser "               -- Sets qutebrowser as browser for tree
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
--- myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
-myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor for tree select
+myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
+-- myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor for tree select
 
 myBorderWidth :: Dimension
 myBorderWidth = 2          -- Sets border width for windows
 
 myNormColor :: String
-myNormColor   = "#e7d5e0"  -- Border color of normal windows
+myNormColor   = "#0a0408"  -- Border color of normal windows
 
 myFocusColor :: String
-myFocusColor  = "#0a0408"  -- Border color of focused windows
+myFocusColor  = "#e7d5e0"  -- Border color of focused windows
 
 altMask :: KeyMask
 altMask = mod1Mask         -- Setting this for use in xprompts
@@ -113,12 +113,13 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
-          spawnOnce "searx-run &"
+          -- spawnOnce "searx-run &"
           spawnOnce "picom &"
           spawnOnce "nm-applet &"
           spawnOnce "volctl &"
           spawnOnce "dunst &"
           spawnOnce "cbatticon &"
+          spawnOnce "lxsession &"
           -- spawnOnce "sh /home/tarun/water.sh &"
           spawnOnce "trayer --edge top --align right --widthtype request --padding 3 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x12080f --height 22 &"
           -- spawnOnce "/usr/bin/emacs --daemon &"
@@ -403,14 +404,14 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 6
            $ ResizableTall 1 (3/100) (1/2) []
-magnify  = renamed [Replace "magnify"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ magnifier
-           $ limitWindows 12
-           $ mySpacing 8
-           $ ResizableTall 1 (3/100) (1/2) []
+-- magnify  = renamed [Replace "magnify"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ magnifier
+--            $ limitWindows 12
+--            $ mySpacing 8
+--            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
@@ -435,23 +436,23 @@ spirals  = renamed [Replace "spirals"]
            $ subLayout [] (smartBorders Simplest)
            $ mySpacing' 8
            $ spiral (6/7)
-threeCol = renamed [Replace "threeCol"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 7
-           $ mySpacing 4
-           $ ThreeCol 1 (3/100) (1/2)
-threeRow = renamed [Replace "threeRow"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 7
-           $ mySpacing 4
-           -- Mirror takes a layout and rotates it by 90 degrees.
-           -- So we are applying Mirror to the ThreeCol layout.
-           $ Mirror
-           $ ThreeCol 1 (3/100) (1/2)
+-- threeCol = renamed [Replace "threeCol"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ limitWindows 7
+--            $ mySpacing 4
+--            $ ThreeCol 1 (3/100) (1/2)
+-- threeRow = renamed [Replace "threeRow"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ limitWindows 7
+--            $ mySpacing 4
+--            -- Mirror takes a layout and rotates it by 90 degrees.
+--            -- So we are applying Mirror to the ThreeCol layout.
+--            $ Mirror
+--            $ ThreeCol 1 (3/100) (1/2)
 tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.
@@ -480,15 +481,11 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                -- I've commented out the layouts I don't use.
-               myDefaultLayout =     tall
-                                 ||| magnify
-                                 ||| noBorders monocle
-                                 ||| floats
+               myDefaultLayout =     noBorders monocle
                                  ||| noBorders tabs
-                                 ||| grid
                                  ||| spirals
-                                 ||| threeCol
-                                 ||| threeRow
+                                 ||| grid
+                                 ||| tall
 
 
 myWorkspaces = [" www ", " pdf ", " dev ", " sys ", " mus "]
@@ -503,7 +500,7 @@ xmobarEscape = concatMap doubleLts
 myClickableWorkspaces :: [String]
 myClickableWorkspaces = clickable . (map xmobarEscape)
                -- $ [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-               $ [" www ", " pdf ", " dev ", " sys ", " mus "]
+               $ [" www ", " pdf ", " emacs ", " sys ", " mus "]
   where
         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                       (i,ws) <- zip [1..5] l,
@@ -522,6 +519,8 @@ myManageHook = composeAll
      , className =? "Spotify"   --> viewShift ( myClickableWorkspaces !! 1 )
      , className =? "kitty" --> viewShift ( myClickableWorkspaces !! 3 )
      , className =? "Pcmanfm" --> viewShift ( myClickableWorkspaces !! 3 )
+     , className =? "Emacs" --> viewShift ( myClickableWorkspaces !! 2 )
+     , className =? "Com.github.johnfactotum.Foliate" --> viewShift ( myClickableWorkspaces !! 1 )
      , title =? "Oracle VM VirtualBox Manager"     --> doFloat
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
@@ -547,7 +546,8 @@ myKeys =
         , ("M-<Return>", spawn (myTerminal ++ " -e zsh"))
         , ("M-b", spawn (myTerminal ++ " -e bpytop"))
         , ("M-c", spawn "kitty -e cmatrix -r")
-        , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
+        , ("M-M1-h", spawn (myTerminal ++ " -e bpytop"))
+        , ("M-<F1>", spawn "firefox")
 
     -- Kill windows
         , ("M-S-c", kill1)                         -- Kill the currently focused client
@@ -630,22 +630,22 @@ myKeys =
         -- , ("M-u l", spawn "mocp --next")
         -- , ("M-u h", spawn "mocp --previous")
         -- , ("M-u <Space>", spawn "mocp --toggle-pause")
-        , ("M-x", spawn "fish -c 'notify-send (xprop | grep WM_CLASS)'")
+        , ("M-x", spawn "notify-send $(xprop | grep WM_CLASS)")
         , ("M-a", spawn "rofi-theme-selector")
         , ("M-q", spawn "qutebrowser")
 
     -- Emacs (CTRL-e followed by a key)
-        -- , ("C-e e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
-        -- , ("C-e b", spawn "emacsclient -c -a 'emacs' --eval '(ibuffer)'")         -- list emacs buffers
-        -- , ("C-e d", spawn "emacsclient -c -a 'emacs' --eval '(dired nil)'")       -- dired emacs file manager
-        -- , ("C-e i", spawn "emacsclient -c -a 'emacs' --eval '(erc)'")             -- erc emacs irc client
-        -- , ("C-e m", spawn "emacsclient -c -a 'emacs' --eval '(mu4e)'")            -- mu4e emacs email client
-        -- , ("C-e n", spawn "emacsclient -c -a 'emacs' --eval '(elfeed)'")          -- elfeed emacs rss client
-        -- , ("C-e s", spawn "emacsclient -c -a 'emacs' --eval '(eshell)'")          -- eshell within emacs
-        -- , ("C-e t", spawn "emacsclient -c -a 'emacs' --eval '(mastodon)'")        -- mastodon within emacs
-        -- , ("C-e v", spawn "emacsclient -c -a 'emacs' --eval '(+vterm/here nil)'") -- vterm within emacs
+        , ("C-e e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
+        , ("C-e b", spawn "emacsclient -c -a 'emacs' --eval '(ibuffer)'")         -- list emacs buffers
+        , ("C-e d", spawn "emacsclient -c -a 'emacs' --eval '(dired nil)'")       -- dired emacs file manager
+        , ("C-e i", spawn "emacsclient -c -a 'emacs' --eval '(erc)'")             -- erc emacs irc client
+        , ("C-e m", spawn "emacsclient -c -a 'emacs' --eval '(mu4e)'")            -- mu4e emacs email client
+        , ("C-e n", spawn "emacsclient -c -a 'emacs' --eval '(elfeed)'")          -- elfeed emacs rss client
+        , ("C-e s", spawn "emacsclient -c -a 'emacs' --eval '(eshell)'")          -- eshell within emacs
+        , ("C-e t", spawn "emacsclient -c -a 'emacs' --eval '(mastodon)'")        -- mastodon within emacs
+        , ("C-e v", spawn "emacsclient -c -a 'emacs' --eval '(+vterm/here nil)'") -- vterm within emacs
         -- -- emms is an emacs audio player. I set it to auto start playing in a specific directory.
-        -- , ("C-e a", spawn "emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/Non-Classical/70s-80s/\")'")
+        , ("C-e a", spawn "emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/Non-Classical/70s-80s/\")'")
         , ("C-g n", spawn "kitty -e nvim")
         , ("M-r", spawn "kitty -e ranger")
 
@@ -703,16 +703,16 @@ main = do
         , startupHook        = myStartupHook
         , layoutHook         = myLayoutHook
         , workspaces         = myClickableWorkspaces
-        , borderWidth        = myBorderWidth
-        , normalBorderColor  = myNormColor
-        , focusedBorderColor = myFocusColor
+        -- , borderWidth        = myBorderWidth
+        -- , normalBorderColor  = myNormColor
+        -- , focusedBorderColor = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput =  hPutStrLn xmproc0  
-                        , ppCurrent = xmobarColor "#e7d5e0" "" . wrap "" "<fn=1>\xf0ab </fn>" -- Current workspace in xmobar
-                        , ppHidden = xmobarColor "#52e5a2" "" . wrap "" "<fn=1>\xfc63 </fn>"   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
+                        , ppCurrent = xmobarColor "#D6AEED" "" . wrap "" "<fn=1>\xf0ab </fn>" -- Current workspace in xmobar
+                        , ppHidden = xmobarColor "#766083" "" . wrap "" "<fn=1>\xfc63 </fn>"   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#302736" ""        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor "#cccbf6" "" . shorten 20     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#666666> <fn=2>|</fn> </fc>"          -- Separators in xmobar
+                        , ppSep =  "<fc=#666666> <fn=0>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "" "<fn=1>\xf527 </fn>"  -- Urgent workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex
                         }
