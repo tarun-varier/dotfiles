@@ -1,6 +1,6 @@
-# Hello
+# d0tf1l3s ... whoa im a hacker
 
-This repo is a backup of all my necessary dotfiles in case restoration is necessary. I reinstall my system every month or so. I require this repo to restore my implementations of utilities below mentioned:
+stuff i got
 
 <ul>
   <li>xmonad</li>
@@ -9,8 +9,7 @@ This repo is a backup of all my necessary dotfiles in case restoration is necess
   <li>dunst</li>
   <li>spicetify</li>
   <li>zathura</li>
+  <li>fish</li>
 </ul>
 
-Thassall
-
-Thank you
+bye
