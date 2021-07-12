@@ -1,0 +1,19 @@
+# suckless builds
+dwm       ~/ultraboi/suckless/dwm
+dwb       ~/ultraboi/suckless/dwmblocks
+# config stuff
+cfg        ~/.config
+vi         ~/.config/nvim
+zs         ~/.config/zsh
+# work stuff
+lgn        ~/work/loginner
+setr       ~/work/settlement_tracking
+tmp        ~/work/temple
+# other stuff
+dl         ~/dl
+sc         ~/sc
+lrn        ~/ultraboi/learn
+emacs       /home/tarun/.emacs.d
+ele       /home/tarun/dl/school/11
+tmcsv       /home/tarun/work/tms-csv-downloader
+wls       /home/tarun/docs/walls

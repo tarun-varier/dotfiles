@@ -1,0 +1,50 @@
+#!/bin/sh
+
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
+alias \
+    ls="exa --icons" \
+    la="exa -all --icons" \
+    prs="paru -S" \
+    prr="paru -R" \
+    n="nvim" \
+    p="python" \
+    ":q"="exit" \
+    q="exit" \
+    tl="tmux list-sessions" \
+
+alias \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+    yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+    y='yarn'
+
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	sdn="sudo shutdown -h now" \
+    lo="libreoffice" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	z="zathura" \
+    me="jp2a /home/tarun/docs/dl/Screenshot_20200606-215104_WhatsApp.png --colors --height=12 --invert" \
+    nal="n /home/tarun/.config/zsh/aliasrc" \
+    nzs="n /home/tarun/.config/zsh/.zshrc" 
+
+alias \
+	magit="nvim -c MagitOnly" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zshnameddirrc" \
+    rewm="cd ~/ultraboi/suckless/dwm && sudo cp config.def.h config.h && sudo make clean install && cd - > /dev/null"
+
+bindkey -s "^p" '/home/tarun/sc/tmux-launch-proj \n'
