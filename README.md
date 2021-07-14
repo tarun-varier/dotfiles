@@ -1,15 +1,18 @@
 # d0tf1l3s ... whoa im a hacker
 
-stuff i got
+### To stow (complicated but simplified ln command) all the dirs
+```bash
+stow */
+```
 
-<ul>
-  <li>xmonad</li>
-  <li>xmobar</li>
-  <li>picom</li>
-  <li>dunst</li>
-  <li>spicetify</li>
-  <li>zathura</li>
-  <li>fish</li>
-</ul>
+### To stow single application config
+```bash
+stow <one-of-the-dirs-in-the-repo>
+```
+
+### To unstow
+```bash
+stow -D <one-of-the-dirs-in-the-repo>
+```
 
 bye

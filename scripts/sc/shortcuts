@@ -1,0 +1,12 @@
+bmdirs="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bm-dirs"
+
+lf_shortcuts="${XDG_CONFIG_HOME:-$HOME/.config}/lf/shortcutrc"
+zsh_named_dirs="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zshnameddirrc"
+
+rm -f "$zsh_named_dirs" 2>/dev/null
+rm -f "$lf_shortcuts" 2>/dev/null
+
+eval "echo \"$(cat "$bmdirs")\"" | \
+awk "!/^\s*#/ && !/^\s*\$/ {gsub(\"\\\s*#.*$\",\"\");
+	printf(\"hash -d %s=%s \n\",\$1,\$2)                 >> \"$zsh_named_dirs\" ; 
+	printf(\"map c%s cd \42%s\42 \n\",\$1,\$2)           >> \"$lf_shortcuts\" }"

@@ -108,7 +108,7 @@ cmd stripspace %stripspace "$f"
 
 # # Bindings
 # # Remove some defaults
-# map m
+map m
 # map o
 # map n
 # map "'"

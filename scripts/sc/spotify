@@ -1,0 +1,23 @@
+#!/bin/sh
+
+notifystatus() {
+    playerctl --player=spotify status &> /dev/null
+    if [[ $? -eq 0 ]]
+    then
+        local ARTIST=$(playerctl --player=spotify metadata artist)
+        local TITLE=$(playerctl --player=spotify metadata title)
+        local DURATION=$(playerctl --player=spotify metadata mpris:length | sed 's/.\{6\}$//')
+        local SHUFFLE=$(playerctl --player=spotify shuffle)
+        local ALBUM=$(playerctl --player=spotify metadata album)
+        notify-send -i rando "   $ARTIST - $TITLE | $ALBUM
+    Shuffle: $SHUFFLE / Duration: $((DURATION%3600/60)):$((DURATION%60))"
+    else
+        notify-send -i dslkajflakj "spotify not alive"
+    fi
+}
+
+case $BUTTON in
+    1) notifystatus ;;
+esac
+
+printf " \n"

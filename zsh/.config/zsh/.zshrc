@@ -31,4 +31,5 @@ _comp_options+=(globdots)
 
 PS1=" %B%{$fg[red]%}%{$fg[yellow]%}%n%{$fg[green]%} %{$fg[magenta]%}%~%{$fg[red]%} "
 
-# fm6000 --dogbert --not_de --de=dwm --color=bright_cyan
+fm6000 -r --not_de --de=dwm --color=bright_cyan
+# pfetch

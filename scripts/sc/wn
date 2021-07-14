@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+ID=$(notify-send.sh --print-id -i randomthingtoremovetheicon 'drink water' 2>&1)
+
+while true; do
+    sleep $1
+    ID=$(notify-send.sh --replace $ID --print-id -i randomthingtoremovetheicon 'drink water' 2>&1)
+done

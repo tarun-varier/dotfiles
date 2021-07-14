@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case $BUTTON in
+	4) xbacklight -inc 10 ;;
+	5) xbacklight -dec 10 ;;
+esac
+
+for battery in /sys/class/power_supply/BAT?*; do
+	capacity=$(cat "$battery/capacity")
+	printf "  %d%%\n" "$capacity";
+done && exit 0

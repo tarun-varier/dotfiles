@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+notify-send -i randomthingtoremovetheicon \
+"W-t - tiling
+W-f - floating
+W-m - monocle
+W-u - centeredmaster
+W-o - centeredfloatingmaster
+W-c - deck"
+

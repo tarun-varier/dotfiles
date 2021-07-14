@@ -1,0 +1,22 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) pavucontrol ;;
+	2) pamixer -t ;;
+	4) pamixer --allow-boost -i 1; kill -36 $(pidof dwmblocks)  ;;
+	5) pamixer --allow-boost -d 1; kill -36 $(pidof dwmblocks)  ;;
+esac
+
+[ $(pamixer --get-mute) = true ] && echo  && exit
+
+vol="$(pamixer --get-volume)"
+
+if [ "$vol" -gt "70" ]; then
+	icon=" "
+elif [ "$vol" -lt "30" ]; then
+	icon=" "
+else
+	icon=" "
+fi
+
+echo "$icon$vol%"

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+lfcd () {
+    binding="$(dmenu -p "Enter Binding" <&- && echo)"
+    tmp="$(mktemp)"
+    if [ ! -z "$binding" ]; then
+        kitty -e lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+            dir="$(cat "$tmp")"
+            rm -f "$tmp" >/dev/null
+            [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && echo "$binding       $dir" >> ~/.config/zsh/bm-dirs
+            shortcuts >/dev/null
+        fi
+    fi
+}
+
+lfcd

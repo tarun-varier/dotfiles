@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) kill -35 $(pidof dwmblocks) ;;
+    6) kitty -e htop ;;
+esac
+
+printf " $(free --mebi | sed -n '2{p;q}' | awk '{printf (" %2.1fGiB\n", ( $3 / 1024), ($2 / 1024))}')\n"

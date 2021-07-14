@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ "$(ps aux | grep shalarm | wc -l)" -eq 1 ]]
+then
+    notify-send.sh 'alarm set to 30 minutes from now' && shalarm "$(date -d "$(date +%T) 30 minutes" +'%H:%M:%S')" >& /dev/null &
+else
+    killall shalarm >& /dev/null
+    notify-send.sh 'alarm killed'
+fi
