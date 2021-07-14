@@ -16,7 +16,7 @@ REALLY_DONE=0
 LEVEL=0
 PREVSELECTION=""
 SELECTION=""
-OPTIONS="generate\nretrieve\n"
+OPTIONS="retrieve\nqr\ngenerate\n"
 
 while [ "$REALLY_DONE" -eq 0 ] ; do 
 
@@ -67,6 +67,11 @@ while [ "$REALLY_DONE" -eq 0 ] ; do
         STARTDIR="$BASEDIR/$SELECTION"
       fi
     done
+  elif [ "$option_chosen" == "qr" ] ; then
+      pass qr
+      DONE=1
+      REALLY_DONE=1
+      exit
   elif [ "$option_chosen" == "generate" ] ; then
       passname=$(dmenu -p "Enter passname" <&- && echo)
       pass generate -c -f "$passname" 

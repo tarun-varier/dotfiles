@@ -13,3 +13,4 @@ hash -d emacs=/home/tarun/.emacs.d
 hash -d ele=/home/tarun/dl/school/11 
 hash -d tmcsv=/home/tarun/work/tms-csv-downloader 
 hash -d wls=/home/tarun/docs/walls 
+hash -d dots=/home/tarun/dotfiles 
