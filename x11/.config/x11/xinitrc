@@ -49,7 +49,7 @@ init_normie () {
 xset b off &
 xsetroot -cursor_name left_ptr &
 setxkbmap us &
-picom -b &
+picom -b
 /home/tarun/.fehbg &
 
 session=${1:-dwm}
