@@ -1,3 +1,4 @@
+set ratios 1:2:3
 # Basic Settings
 # set previewer ~/scripts/lf/preview
 set preview true
@@ -18,6 +19,7 @@ cmd open ${{
         video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
         application/pgp-encrypted) $EDITOR $fx ;;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) sc-im $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
@@ -32,6 +34,12 @@ cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans
+}}
+
+cmd rename_with_underscores ${{
+    echo -n "Are you sure you want to do this? [y]/n "
+    read ans
+    [[ "$ans" == 'y' || -z $ans ]] && mv -- "$f" "${f// /_}" && lf -remote 'send reload'
 }}
 
 cmd chmod ${{
@@ -118,6 +126,7 @@ cmd stripspace %stripspace "$f"
 # # Bindings
 # # Remove some defaults
 map m
+map r
 # map o
 # map n
 # map "'"
@@ -171,11 +180,12 @@ map ch chmod
 map bg setwallpaper
 # map o open_config
 # map br $vimv $fx
-map r rename
+map rn rename
 map H top
 map L bottom
 map R reload
 map C clear
 map U unselect
+map ru rename_with_underscores
 
 source "~/.config/lf/shortcutrc"

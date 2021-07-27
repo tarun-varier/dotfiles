@@ -68,7 +68,7 @@ while [ "$REALLY_DONE" -eq 0 ] ; do
       fi
     done
   elif [ "$option_chosen" == "qr" ] ; then
-      pass qr
+      alacritty -e pass qr -f
       DONE=1
       REALLY_DONE=1
       exit

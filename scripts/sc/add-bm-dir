@@ -4,7 +4,7 @@ lfcd () {
     binding="$(dmenu -p "Enter Binding" <&- && echo)"
     tmp="$(mktemp)"
     if [ ! -z "$binding" ]; then
-        kitty -e lf -last-dir-path="$tmp" "$@"
+        alacritty -e lf -last-dir-path="$tmp" "$@"
         if [ -f "$tmp" ]; then
             dir="$(cat "$tmp")"
             rm -f "$tmp" >/dev/null

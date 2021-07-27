@@ -19,22 +19,22 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "SF Mono" :size 14 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "SF Mono" :size 15))
+(setq doom-font (font-spec :family "Cascadia Code" :size 16 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme 'doom-horizon)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/notes/org")
+(setq org-roam-directory "~/notes/roam")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -66,3 +66,8 @@
   (setq-default flycheck-disabled-checkers '(javascript-eslint)))
 
 (use-package! lsp-tailwindcss)
+
+(custom-set-variables '(conda-anaconda-home "~/.local/share/.miniconda/"))
+
+(setq
+ conda-env-home-directory (expand-file-name "~/.local/share/.miniconda/"))

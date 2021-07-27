@@ -1,0 +1,4 @@
+#!/bin/bash
+
+banner_text="$(dmenu -p "Enter Text" <&- && echo)"
+alacritty --hold -e figlet -w $(tput cols) -c $banner_text

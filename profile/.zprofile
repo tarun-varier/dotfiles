@@ -1,5 +1,5 @@
 # Path Variable
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/var/lib/flatpak/exports/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/tarun/sc:/home/tarun/.local/bin:/home/tarun/.miniconda/bin:/home/tarun/.emacs.d/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/var/lib/flatpak/exports/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/tarun/sc:/home/tarun/.local/bin:/home/tarun/.miniconda/bin:/home/tarun/.emacs.d/bin:/home/tarun/.local/share/.miniconda/bin"
 export HOME="/home/tarun"
 # Default programs
 export EDITOR="nvim"
@@ -16,6 +16,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export ZSHRC="${ZDOTDIR}/.zshrc"
 export LESSHISTFILE="-"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
+export DOT_MINICONDA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/.miniconda"
 
 # Program-based settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
@@ -28,7 +29,7 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export SUDO_ASKPASS="$HOME/sc/dmenupass"
+export DOAS_ASKPASS="dmenu -P -p password\ bhai: "
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 alias sxiv="sxiv-rifle"
 alias google-chrome="google-chrome-stable"
@@ -121,4 +122,3 @@ ex=🎯:\
 *.jar=♨:\
 *.java=♨:\
 "
-

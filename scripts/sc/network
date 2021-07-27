@@ -2,7 +2,7 @@
 
 case $BUTTON in
     1) kill -37 $(pidof dwmblocks) ;;
-    6) kitty -e nmtui ;;
+    6) alacritty -e nmtui ;;
 esac
 
 case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in

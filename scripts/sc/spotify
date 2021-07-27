@@ -9,10 +9,10 @@ notifystatus() {
         local DURATION=$(playerctl --player=spotify metadata mpris:length | sed 's/.\{6\}$//')
         local SHUFFLE=$(playerctl --player=spotify shuffle)
         local ALBUM=$(playerctl --player=spotify metadata album)
-        notify-send -i rando "   $ARTIST - $TITLE | $ALBUM
+        notify-send.sh -i randomting "   $ARTIST - $TITLE | $ALBUM
     Shuffle: $SHUFFLE / Duration: $((DURATION%3600/60)):$((DURATION%60))"
     else
-        notify-send -i dslkajflakj "spotify not alive"
+        notify-send.sh -i dslkajflakj "spotify not alive"
     fi
 }
 

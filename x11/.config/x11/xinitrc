@@ -36,7 +36,7 @@ init_dwm () {
     lxsession &
     dwmblocks &
     xautolock -time 30 -locker slock -notify 5 -notifier "notify-send 'Screen will lock in 5 s'" -corners 0-00 &
-    exec dwm > /home/tarun/.dwm.log
+    exec dwm > /home/tarun/.local/share/.dwm.log
 }
 
 init_normie () {
@@ -47,8 +47,12 @@ init_normie () {
 }
 
 xset b off &
+xset r rate 300 50
 xsetroot -cursor_name left_ptr &
 setxkbmap us &
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+/usr/bin/pipewire-media-session &
 picom -b
 /home/tarun/.fehbg &
 
@@ -57,7 +61,6 @@ session=${1:-dwm}
 case $session in
     dwm               ) init_dwm;;
     normie            ) init_normie;;
-    # No known session, try to run it as command
     *                 ) exec $1;;
 esac
 # exec openbox-session

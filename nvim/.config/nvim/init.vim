@@ -121,8 +121,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
 augroup END
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
-autocmd BufWritePost ~/ultraboi/suckless/dwmblocks/config.def.h !cd ~/ultraboi/suckless/dwmblocks; sudo -A make install && { killall -q dwmblocks;setsid dwmblocks & }
-autocmd BufWritePost ~/ultraboi/suckless/dwm/config.def.h !cd ~/ultraboi/suckless/dwm; sudo -A cp config.def.h config.h; sudo -A make install 
+autocmd BufWritePost ~/ultraboi/suckless/dwmblocks/config.def.h !cd ~/ultraboi/suckless/dwmblocks; doaspass make install && { killall -q dwmblocks;setsid dwmblocks & }
+autocmd BufWritePost ~/ultraboi/suckless/dwm/config.def.h !cd ~/ultraboi/suckless/dwm; doaspass cp config.def.h config.h; doaspass make install 
 autocmd BufEnter * lua require'completion'.on_attach()
 
 let g:nvim_tree_quit_on_open = 1
