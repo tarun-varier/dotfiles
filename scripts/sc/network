@@ -5,9 +5,20 @@ case $BUTTON in
     6) alacritty -e nmtui ;;
 esac
 
+ssid="$(iwgetid --raw)" 
+if [ $ssid = "ChaitramRail_EXT" ]; then
+    mainorext="ext"
+elif [ $ssid = "ChaitramRail" ]; then
+    mainorext="main"
+elif [ -z $ssid ]; then
+    mainorext="dead"
+else
+    mainorext="${ssid:0:4}"
+fi
+
 case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
 	down) wifiicon="睊" ;;
 	up) wifiicon="$(awk '/^\s*w/ { print "直", int($3 * 100 / 70) "%" }' /proc/net/wireless)" ;;
 esac
 
-printf "%s\n" "$wifiicon"
+printf "%s : %s\n" "$wifiicon" "$mainorext"

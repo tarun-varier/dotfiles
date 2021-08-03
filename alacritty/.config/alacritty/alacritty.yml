@@ -8,8 +8,8 @@
 #
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
+import:
+  - ~/.config/alacritty/colors.yml
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -41,9 +41,9 @@
 #
 # Blank space added around the window in pixels. This padding is scaled
 # by DPI and the specified value is always added at both opposing sides.
-#padding:
-#  x: 0
-#  y: 0
+padding:
+  x: 0
+  y: 0
 # Spread additional padding evenly around the terminal content.
 #dynamic_padding: false
 # Window decorations
@@ -97,10 +97,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Cascadia Code
+    family: JetBrainsMonoMedium Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: SemiBold
 
   # Bold font face
   bold:
@@ -108,7 +108,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: JetBrainsMonoMedium Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -119,10 +119,10 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: JetBrainsMonoMedium Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: Bold Italic
 
   # Bold italic font face
   bold_italic:
@@ -130,19 +130,19 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: JetBrainsMonoMedium Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 14.0
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
-  #offset:
-  #  x: 0
-  #  y: 0
+  offset:
+    x: 0
+    y: 0
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
@@ -311,11 +311,11 @@ font:
   # When set to `command: None`, no command will be executed.
   #
   # Example:
-  #   command:
-  #     program: notify-send
-  #     args: ["Hello, World!"]
+  command:
+    program: notify-send.sh
+    args: ["check alacritty"]
   #
-  #command: None
+  # command: None
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
@@ -663,30 +663,3 @@ font:
   # a no-op if you do not wish to receive input characters for that binding.
   #
   # I
-colors:
-  name: Gotham
-  author: whatyouhide
-  primary:
-    background: "#0a0f14"
-    foreground: "#98d1ce"
-  cursor:
-    text: "#0a0f14"
-    cursor: "#98d1ce"
-  normal:
-    black: "#0a0f14"
-    red: "#c33027"
-    green: "#26a98b"
-    yellow: "#edb54b"
-    blue: "#195465"
-    magenta: "#4e5165"
-    cyan: "#33859d"
-    white: "#98d1ce"
-  bright:
-    black: "#10151b"
-    red: "#d26939"
-    green: "#081f2d"
-    yellow: "#245361"
-    blue: "#093748"
-    magenta: "#888ba5"
-    cyan: "#599caa"
-    white: "#d3ebe9"

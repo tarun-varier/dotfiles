@@ -3,8 +3,8 @@ set ratios 1:2:3
 # set previewer ~/scripts/lf/preview
 set preview true
 set hidden true
-set drawbox true
 set icons true
+set drawbox true
 set ignorecase true
 
 # Custom Functions

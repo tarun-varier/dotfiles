@@ -5,6 +5,7 @@ export HOME="/home/tarun"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="brave"
+export LANG="en_US.utf-8"
 # XDG variables
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"

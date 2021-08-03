@@ -14,9 +14,6 @@ SAVEHIST=1000000
 
 zsh_add_file "zsh-vim-mode"
 
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-
 setopt autocd
 
 source $XDG_CONFIG_HOME/zsh/aliasrc
@@ -29,7 +26,7 @@ compinit
 _comp_options+=(globdots)
 
 # PS1=" %B%{$fg[red]%}%{$fg[yellow]%}%n%{$fg[green]%} %{$fg[magenta]%}%~%{$fg[red]%} "
-PS1=" %B%{$fg[red]%}%{$fg[yellow]%}%n%{$fg[green]%} %{$fg[magenta]%}%~%{$reset_color%}%b "
+PS1=" %{$fg[magenta]%}%~%{$reset_color%}%b "
 
 # fm6000 -r --not_de --de=dwm --color=bright_cyan
 # pfetch
@@ -50,3 +47,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"

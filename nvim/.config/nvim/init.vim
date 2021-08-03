@@ -38,12 +38,14 @@ Plug 'mlaursen/vim-react-snippets'
 " Diagnose vim
 Plug 'tweekmonster/startuptime.vim'
 Plug 'vimwiki/vimwiki'
+" highlight with colors
+Plug 'gko/vim-coloresque'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
 " settings
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+colorscheme nord
 
 set relativenumber
 set nu
@@ -103,6 +105,7 @@ vmap <leader>/ gc
 nnoremap <leader>gs :G<CR>
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+map Y y$
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -121,8 +124,9 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
 augroup END
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
-autocmd BufWritePost ~/ultraboi/suckless/dwmblocks/config.def.h !cd ~/ultraboi/suckless/dwmblocks; doaspass make install && { killall -q dwmblocks;setsid dwmblocks & }
-autocmd BufWritePost ~/ultraboi/suckless/dwm/config.def.h !cd ~/ultraboi/suckless/dwm; doaspass cp config.def.h config.h; doaspass make install 
+autocmd BufWritePost ~/ultraboi/sockless/dwmblocks/config.def.h !cd ~/ultraboi/sockless/dwmblocks; doaspass make install && { killall -q dwmblocks;setsid dwmblocks & }
+autocmd BufWritePost ~/ultraboi/sockless/dwm/config.def.h !cd ~/ultraboi/sockless/dwm; doaspass cp config.def.h config.h; doaspass make install 
+autocmd BufWritePost ~/.config/xres/current !xrdb -merge ~/.config/xres/current; xdotool key super+F5; alacritty-xres > ~/.config/alacritty/colors.yml
 autocmd BufEnter * lua require'completion'.on_attach()
 
 let g:nvim_tree_quit_on_open = 1
@@ -133,7 +137,7 @@ let g:user_emmet_settings = {
 \ },
 \}
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },

@@ -45,6 +45,6 @@ alias \
 alias \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zshnameddirrc" \
-    rewm="cd ~/ultraboi/suckless/dwm && sudo cp config.def.h config.h && sudo make clean install && cd - > /dev/null"
+    rewm="cd ~/ultraboi/sockless/dwm && sudo cp config.def.h config.h && sudo make clean install && cd - > /dev/null"
 
 bindkey -s "^p" '/home/tarun/sc/tmux-launch-proj \n'
