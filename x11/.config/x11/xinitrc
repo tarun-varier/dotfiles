@@ -34,8 +34,10 @@ init_dwm () {
     /home/tarun/sc/wn 900 &
     lxsession &
     dwmblocks &
-    xautolock -time 30 -locker slock -notify 5 -notifier "notify-send 'Screen will lock in 5 s'" -corners 0-00 &
+    # xautolock -time 30 -locker slock -notify 5 -notifier "notify-send 'Screen will lock in 5 s'" -corners 0-00 &
+    /home/tarun/sc/pomo notify &
     clipmenud &
+    searx-run &
     exec dwm > /home/tarun/.local/share/.dwm.log
 }
 
@@ -53,7 +55,6 @@ setxkbmap us &
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
 /usr/bin/pipewire-media-session &
-picom -b &
 /home/tarun/.fehbg &
 
 session=${1:-dwm}

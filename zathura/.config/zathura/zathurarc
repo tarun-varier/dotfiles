@@ -20,8 +20,8 @@ set zoom-min 10
 
 # zathurarc-dark
 
-set font "Cascadia Code 11"
-set default-bg "#000000" #00
+set font "JetBrainsMonoMedium Nerd Font 11"
+set default-bg "#FFFFFF" #00
 set default-fg "#F7F7F6" #01
 
 set statusbar-fg "#B0B0B0" #04
@@ -57,8 +57,10 @@ set recolor-keephue "true"
 
 set render-loading "false"
 set scroll-step 50
+set recolor "true"
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map x toggle_statusbar
-map d set recolor "true"
+unmap t
+map td set recolor "false"

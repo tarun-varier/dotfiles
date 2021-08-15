@@ -41,11 +41,12 @@ Plug 'vimwiki/vimwiki'
 " highlight with colors
 Plug 'gko/vim-coloresque'
 Plug 'arcticicestudio/nord-vim'
+Plug 'famiu/nvim-reload'
 
 call plug#end()
 
 " settings
-colorscheme nord
+colorscheme gruvbox
 
 set relativenumber
 set nu
@@ -137,7 +138,7 @@ let g:user_emmet_settings = {
 \ },
 \}
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },

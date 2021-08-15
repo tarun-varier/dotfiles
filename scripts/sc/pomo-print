@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) kill -41 $(pidof dwmblocks);;
+    3) pomo pause;;
+    6) pomo stop;;
+esac
+
+pomo clock | xargs

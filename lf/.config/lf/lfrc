@@ -10,17 +10,17 @@ set ignorecase true
 # Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        text/*) $EDITOR $fx;;
-        image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
-        image/svg+xml) display -- $f ;;
-        image/*) setsid -f sxiv-rifle $f ;;
-        audio/*) mpv --audio-display=no $f ;;
-        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-        application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        application/pgp-encrypted) $EDITOR $fx ;;
-        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) sc-im $fx ;;
-        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+        image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura "$f" >/dev/null 2>&1 ;;
+        text/*) $EDITOR "$f";;
+        image/x-xcf) setsid -f gimp "$f" >/dev/null 2>&1 ;;
+        image/svg+xml) display -- "$f" ;;
+        image/*) setsid -f sxiv-rifle "$f" ;;
+        audio/*) mpv --audio-display=no "$f" ;;
+        video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
+        application/pdf|application/vnd*|application/epub*) setsid -f zathura "$f" >/dev/null 2>&1 ;;
+        application/pgp-encrypted) $EDITOR "$f" ;;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) sc-im "$f" ;;
+        *) for f in $fx; do setsid -f $OPENER "$f" >/dev/null 2>&1; done;;
     esac
 }}
 
@@ -187,5 +187,7 @@ map R reload
 map C clear
 map U unselect
 map ru rename_with_underscores
+map ` mark-load
+map cusb cd /run/media/tarun
 
 source "~/.config/lf/shortcutrc"

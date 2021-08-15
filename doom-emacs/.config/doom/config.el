@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "JetBrainsMonoMedium Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMonoMedium Nerd Font" :size 15))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 16)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 15))
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-horizon)
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -145,3 +145,5 @@
 (set-popup-rule! "^\\*Org Agenda" :side 'bottom :size 0.90 :select t :ttl nil)
 (set-popup-rule! "^CAPTURE.*\\.org$" :side 'bottom :size 0.90 :select t :ttl nil)
 (set-popup-rule! "^\\*org-brain" :side 'right :size 1.00 :select t :ttl nil)
+
+(setq +doom-dashboard-banner-file (expand-file-name "logo.svg" doom-private-dir))
