@@ -19,7 +19,7 @@ cmd open ${{
         video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
         application/pdf|application/vnd*|application/epub*) setsid -f zathura "$f" >/dev/null 2>&1 ;;
         application/pgp-encrypted) $EDITOR "$f" ;;
-        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) sc-im "$f" ;;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) libreoffice "$f" ;;
         *) for f in $fx; do setsid -f $OPENER "$f" >/dev/null 2>&1; done;;
     esac
 }}
@@ -72,9 +72,9 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
+cmd dragon %dragon-drag-and-drop -a -x "$fx"
+cmd dragon-stay %dragon-drag-and-drop -a "$fx"
+cmd dragon-individual %dragon-drag-and-drop "$fx"
 # cmd cpdragon %cpdragon
 # cmd mvdragon %mvdragon
 # cmd dlfile %dlfile

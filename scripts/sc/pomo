@@ -195,6 +195,7 @@ function send_msg {
         osascript -e "tell app \"System Events\" to display dialog \"${1}\"" &> /dev/null
     elif command -v notify-send &> /dev/null; then
         notify-send Pomodoro "${1}"
+        kill -41 $(pidof dwmblocks)
     else
         echo "${1}"
     fi

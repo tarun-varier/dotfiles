@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer /home/tarun/docs/music/sounds/notification.mp3 >& /dev/null

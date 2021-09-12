@@ -79,6 +79,8 @@
 (setq
  conda-env-home-directory (expand-file-name "~/.local/share/.miniconda/"))
 
+(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
+
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
@@ -130,8 +132,6 @@
         org-bullets-bullet-list '("·")
         org-hide-emphasis-markers t
         org-log-done 'time
-        ;; ex. of org-link-abbrev-alist in action
-        ;; [[arch-wiki:Name_of_Page][Description]]
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
         '((sequence
            "TODO(t)"           ; A task that is ready to be tackled
@@ -146,4 +146,79 @@
 (set-popup-rule! "^CAPTURE.*\\.org$" :side 'bottom :size 0.90 :select t :ttl nil)
 (set-popup-rule! "^\\*org-brain" :side 'right :size 1.00 :select t :ttl nil)
 
-(setq +doom-dashboard-banner-file (expand-file-name "logo.svg" doom-private-dir))
+;; (setq +doom-dashboard-banner-file (expand-file-name "logo.svg" doom-private-dir))
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+(add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
+(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+
+
+(plist-put! +ligatures-extra-symbols
+  ;; org
+  :name          "»"
+  :src_block     "»"
+  :src_block_end "«"
+  :quote         "“"
+  :quote_end     "”"
+  ;; Functional
+  :lambda        "λ"
+  :def           "ƒ"
+  :composition   "∘"
+  :map           "↦"
+  ;; Types
+  :null          "∅"
+  :true          ""
+  :false         "𝔽"
+  :int           "ℤ"
+  :float         "ℝ"
+  :str           "𝕊"
+  :bool          ""
+  :list          ""
+  ;; Flow
+  :not           ""
+  :in            "∈"
+  :not-in        "∉"
+  :and           "∧"
+  :or            "∨"
+  :for           "∀"
+  :some          "∃"
+  :return        "⟼"
+  :yield         "⟻"
+  ;; Other
+  :union         "⋃"
+  :intersect     "∩"
+  :diff          "∖"
+  :tuple         "⨂"
+  :pipe          "ﳣ" ;; FIXME: find a non-private char
+  :dot           "•"
+  )
+
+(use-package! elfeed-goodies)
+(elfeed-goodies/setup)
+(setq elfeed-goodies/entry-pane-size 0.5)
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(setq elfeed-feeds (quote
+                    (("https://www.reddit.com/r/linux.rss" reddit linux)
+                     ("https://www.reddit.com/r/commandline.rss" reddit commandline)
+                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                     ("https://hackaday.com/blog/feed/" hackaday linux)
+                     ("https://opensource.com/feed" opensource linux)
+                     ("https://linux.softpedia.com/backend.xml" softpedia linux)
+                     ("https://itsfoss.com/feed/" itsfoss linux)
+                     ("https://www.zdnet.com/topic/linux/rss.xml" zdnet linux)
+                     ("https://www.phoronix.com/rss.php" phoronix linux)
+                     ("http://feeds.feedburner.com/d0od" omgubuntu linux)
+                     ("https://www.computerworld.com/index.rss" computerworld linux)
+                     ("https://www.networkworld.com/category/linux/index.rss" networkworld linux)
+                     ("https://www.techrepublic.com/rssfeeds/topic/open-source/" techrepublic linux)
+                     ("https://betanews.com/feed" betanews linux)
+                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux)
+                     ("https://distrowatch.com/news/dwd.xml" distrowatch linux))))

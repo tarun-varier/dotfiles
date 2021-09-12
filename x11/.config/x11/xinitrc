@@ -37,8 +37,13 @@ init_dwm () {
     # xautolock -time 30 -locker slock -notify 5 -notifier "notify-send 'Screen will lock in 5 s'" -corners 0-00 &
     /home/tarun/sc/pomo notify &
     clipmenud &
-    searx-run &
-    exec dwm > /home/tarun/.local/share/.dwm.log
+    rm -rf /home/tarun/Downloads &
+    while true; do
+        # Log stderror to a file 
+        dwm 2> ~/.dwm.log
+        # No error logging
+        #dwm >/dev/null 2>&1
+    done
 }
 
 init_normie () {

@@ -1,0 +1,4 @@
+# key: /fx
+# name: find element by xpath
+# --
+driver.find_element_by_xpath(${1: '$(clipboard-yank)'})$0

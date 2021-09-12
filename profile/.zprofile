@@ -46,6 +46,9 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export SSB_HOME="$XDG_DATA_HOME"/zoom
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
+alias flstudio="env WINEPREFIX="/home/tarun/.local/share/wineprefixes/default" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/tarun/.local/share/wineprefixes/default/dosdevices/c:/users/tarun/AppData/Roaming/Microsoft/Windows/Start\\ Menu/Programs/Image-Line/FL\\ Studio\\ 20.lnk"
+alias dosa="doas"
+
 export LF_ICONS="di=📁:\
 fi=📃:\
 tw=🤝:\
